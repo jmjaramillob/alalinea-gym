@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gym Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo-container">
+            <img src="{% static 'img/logo.JPG' %}" alt="A la Línea Gimnasio" class="logo-sidebar">
+        </div>
+        <a href="{% url 'home' %}" class="{% block home_active %}{% endblock %}">Inicio</a>
+        <a href="{% url 'staff' %}" class="{% block staff_active %}{% endblock %}">Personal</a>
+        <!-- Submenú de Clientes -->
+        <div class="submenu">
+            <a href="#!" class="toggle-submenu">Clientes ▼</a>
+            <div class="submenu-items">
+                <a href="{% url 'cliente_create' %}" class="{% block client_active %}{% endblock %}">Registrar cliente</a>
+                <a href="{% url 'cliente_list' %}">Mostrar Información</a>
+            </div>
+        </div>
+
+        <a href="{% url 'payment_plans' %}" class="{% block payment_active %}{% endblock %}">Pagos</a>
+
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <header>
+            <h1>Dashboard del Gimnasio</h1>
+            <nav>
+                {% if user.is_authenticated %}
+                    <a href="#">{{ user.username }}</a>
+                    <a href="{% url 'logout' %}">Cerrar sesión</a>
+                {% else %}
+                    <a href="{% url 'login' %}">Iniciar sesión</a>
+                    <a href="{% url 'register' %}">Registrarse</a>
+                {% endif %}
+            </nav>
+        </header>
+
+        <!-- Content Block -->
+        <section>
+            {% block content %}
+            <!-- Este bloque será reemplazado por contenido específico en otras plantillas -->
+            {% endblock %}
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Gimnasio. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/client.css' %}">{% endblock %}
+{% block content %}
+<h2>Lista de Clientes</h2>
+
+<!-- Formulario de búsqueda -->
+<form method="get" class="search-form">
+    <input type="text" name="q" placeholder="Buscar clientes..." value="{{ request.GET.q }}" class="form-control">
+    <button type="submit" class="btn btn-primary">Buscar</button>
+</form>
+
+<!-- Botón para agregar nuevo cliente -->
+<a href="{% url 'cliente_create' %}" class="btn btn-success">+ Nuevo Cliente</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Teléfono</th>
+            <th>Dirección</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for cliente in clientes %}
+        <tr>
+            <td>{{ cliente.name }}</td>
+            <td>{{ cliente.email }}</td>
+            <td>{{ cliente.phone }}</td>
+            <td>{{ cliente.address }}</td>
+            <td>
+                <a href="{% url 'cliente_update' cliente.id %}" class="btn btn-warning">Editar</a>
+                <a href="{% url 'cliente_delete' cliente.id %}" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No hay clientes registrados.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+{% endblock %}
+{% block extra_js %}
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.querySelector('.search-form input[type="text"]');
+    const resultsTable = document.querySelector('.table tbody');
+
+    searchInput.addEventListener('input', () => {
+        const query = searchInput.value;
+        fetch(`/clientes/mostrar/?q=${query}`)
+            .then(response => response.text())
+            .then(html => {
+                // Extraer la tabla filtrada del HTML de la respuesta
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const newTableBody = doc.querySelector('.table tbody');
+
+                // Reemplazar el contenido de la tabla
+                resultsTable.innerHTML = newTableBody.innerHTML;
+            });
+        });
+    });
+    </script>
+{% endblock %}

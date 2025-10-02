@@ -1,0 +1,79 @@
+/* Contenedor principal del formulario */
+.form-container {
+    width: 100%;
+    max-width: 500px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+}
+
+/* Estilos para los labels */
+.form-container label {
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-top: 10px;
+}
+
+/* Estilos para los inputs y textarea */
+.form-container input,
+.form-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+/* Efecto al enfocar los inputs */
+.form-container input:focus,
+.form-container textarea:focus {
+    border-color: #892b75;
+    box-shadow: 0px 0px 5px rgba(150, 22, 255, 0.5);
+    outline: none;
+}
+
+/* Botón de Guardar */
+.btn-primary {
+    width: 100%;
+    background: #892b75;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+/* Efecto Hover en Botón */
+.btn-primary:hover {
+    background: rgba(150, 22, 255, 0.5);
+}
+
+/* Botón de Cancelar */
+.btn-secondary {
+    width: 100%;
+    background: #6c757d;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+}
+
+/* Efecto Hover en Botón de Cancelar */
+.btn-secondary:hover {
+    background: #5a6268;
+}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block payment_active %}active{% endblock %}
+{% block content %}
+    <h1>Planes de Pago</h1>
+    {% for plan in plans %}
+        <div>
+            <h2>{{ plan.name }}</h2>
+            <p>{{ plan.description }}</p>
+            <p>${{ plan.price }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

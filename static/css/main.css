@@ -1,0 +1,228 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Header */
+header {
+    background-color: #892b75;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #393a3c;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    margin: 5px 0;
+}
+
+.sidebar a:hover {
+    background-color: #892b75;
+    text-decoration: none;
+}
+
+.sidebar a.active {
+    background-color: #892b75;
+    font-weight: bold;
+}
+
+/* Contenedor del logo en el sidebar */
+.logo-container {
+    text-align: center;
+    padding: 20px 0; /* Espaciado arriba y abajo */
+    width: 100%;
+}
+
+/* Estilo del logo dentro del sidebar */
+.logo-sidebar {
+    width: 80%; /* Ajusta el ancho al 80% del contenedor */
+    max-width: 180px; /* Tamaño máximo para evitar que sea muy grande */
+    height: auto; /* Mantiene la proporción */
+    display: block;
+    margin: 0 auto; /* Centrado */
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 260px;
+    padding: 20px;
+}
+
+.main-content h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    margin: 0 0 10px;
+    font-size: 20px;
+}
+
+/* Grid Layout for Cards */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Buttons */
+button {
+    background-color: #892b75;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #892b75;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 10px;
+}
+
+table th {
+    background-color: #892b75;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Estilo para el contenedor del submenú */
+.submenu {
+    margin-top: 10px;
+    padding-left: 10px;
+}
+
+.submenu .toggle-submenu {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.submenu .submenu-items {
+    display: none; /* Ocultar por defecto */
+    margin-top: 5px;
+    padding-left: 15px;
+}
+
+.submenu .submenu-items a {
+    color: #ddd;
+    text-decoration: none;
+    display: block;
+    padding: 5px 0;
+}
+
+.submenu .submenu-items a:hover {
+    color: #fff;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .main-content {
+        margin-left: 210px;
+    }
+}
+
+@media (max-width: 576px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    footer {
+        font-size: 12px;
+    }
+}
